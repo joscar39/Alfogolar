@@ -1,0 +1,3 @@
+1. Seleccionar de selenium e importar el webdriver "from selenium import webdriver"
+2.importar modulo de teclado "from selenium.webdriver.common.keys import Keys" OJO con las mayusculas
+3.
