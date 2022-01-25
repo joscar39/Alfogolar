@@ -36,7 +36,7 @@ class registro_unittest(unittest.TestCase):
 
 ### Creo un ciclo for para ir chequeando cada fila y columna del archivo y a su vez guardarlos en las variables que estarab asignadas a los campos a llenar
         for i in range(1,21):
-### Creo variables donde se guadaran cada uno de lso datos por columna y coloco el rango de letra que tenemos de datosw en el excel
+### Creo variables donde se guadaran cada uno de los datos por columna y coloco el rango de letra que tenemos de datosw en el excel
 
             name, lastname, user, cod = datos[f'A{i}:D{i}'][0]
             ntlf, email, password = datos[f'E{i}:G{i}'][0]
@@ -95,7 +95,7 @@ class registro_unittest(unittest.TestCase):
             captchaname = driver.find_element_by_xpath("/html/body/div[5]/div[2]/div/div/form/div[9]/input")
             captchaname.send_keys(cap1_text + cap2_text + cap3_text + cap4_text + cap5_text + cap6_text)
 
-### Aceptar terminos y condiciones
+### Aceptar terminos y condiciones y verificar si el checkbox quedo correctamente seleccionado
 
             driver.find_element_by_id("terms-conditions").click()
             time.sleep(0.25)
@@ -113,9 +113,11 @@ class registro_unittest(unittest.TestCase):
                 break
             time.sleep(2)
 
-            #visualizar si el registro fue exitoso y cerrar sesion
+            #visualizar si el registro fue exitoso, hacer un screenshot y posteriormente cerrar sesion
             login_exitoso = driver.find_elements_by_class_name("dashboard-menu-bar")
             if login_exitoso != "Iniciar Sesión":
+                driver.get_screenshot_as_file("C:\\Users\\user\\Documents\\Proyectos\\Selenium\\Alfogolar\\recursos\\screenshots\\Registro-{index}.png")
+                time.sleep(1)
                 driver.find_element_by_xpath("/html/body/header/div[1]/div/div/ul/li[1]/div/a[2]").click()
                 time.sleep(1)
                 driver.find_element_by_xpath("/html/body/div[3]/div[7]/ul/li[7]/a").click()
